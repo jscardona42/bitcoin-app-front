@@ -1,0 +1,7 @@
+{
+  "name": "front-tekus",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
