@@ -8,9 +8,22 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'bitcoins',
     pathMatch: 'full'
   },
+  {
+    path: 'bitcoins',
+    children:[
+      {
+        path: '',
+        loadChildren: () => import('./bitcoins/bitcoins.module').then( m => m.BitcoinsPageModule)
+      },
+      {
+        path: ':page/:_id',
+        loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
+      },
+    ]
+  }
 ];
 
 @NgModule({

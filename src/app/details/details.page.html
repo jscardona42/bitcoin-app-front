@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="bitcoins"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-row text-center>
+        <ion-col size="10">
+          <img src="../../assets/img/header.jpg" alt="">
+        </ion-col>
+      </ion-row>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <!-- Detalles bitcoin actual -->
+    <ion-col *ngIf="bitcoin_today !== undefined && page == 1" color="" size="12" size-md="4">
+      <ion-card class="card_today">
+        <ion-card-header>
+          <ion-card-title class="ion-text-bold ion-text-center">
+            <p>
+              <ion-icon name="logo-usd"></ion-icon>
+            </p>
+            {{bitcoin_today.bpi_usd.rate | number}} {{bitcoin_today.bpi_usd.code}}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-header>
+          <ion-card-title class="ion-text-bold ion-text-center">
+            <p>
+              <ion-icon name="logo-euro"></ion-icon>
+            </p>
+            {{bitcoin_today.bpi_euro.rate | number}} {{bitcoin_today.bpi_euro.code}}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-header *ngIf="trm !== undefined">
+          <ion-card-title class="ion-text-bold ion-text-center">
+            <p>
+              <ion-icon name="cash-outline"></ion-icon>
+            </p>
+            {{bitcoin_today.bpi_usd.rate * trm.valor | number}} {{trm.unidad}}
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+    <!-- Detalles bitcoin actual -->
+    <ion-col *ngIf="bitcoin != undefined" color="" size="12" size-md="4">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title class="ion-text-bold ion-text-center">
+            <p>
+              <ion-icon name="logo-usd"></ion-icon>
+            </p>
+            {{bitcoin.bpi_usd.rate | number}} {{bitcoin.bpi_usd.code}}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-header>
+          <ion-card-title class="ion-text-bold ion-text-center">
+            <p>
+              <ion-icon name="logo-euro"></ion-icon>
+            </p>
+            {{bitcoin.bpi_euro.rate | number}} {{bitcoin.bpi_euro.code}}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-header *ngIf="trm !== undefined">
+          <ion-card-title class="ion-text-bold ion-text-center">
+            <p>
+              <ion-icon name="cash-outline"></ion-icon>
+            </p>
+            {{bitcoin.bpi_usd.rate * trm.valor | number}} {{trm.unidad}}
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
