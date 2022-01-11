@@ -41,16 +41,13 @@ export class DetailsPage implements OnInit {
       this.page = param.get("page");
     })
     if (this.page === "1") {
-      this.trm = this.bitcoinsService.getTrm(this.bitcoin_today.updated);
+      this.trm = this.bitcoinsService.getTrmToday(this.bitcoin_today.updated);
+      console.log();
     } else {
       this.bitcoin = this.getBitcoinById(this.id);
       this.trm = this.bitcoinsService.getTrm(this.bitcoin.updated);
     }
 
-  }
-
-  getTrm(updated: Date) {
-    this.trm = this.bitcoinsService.getTrm(updated);
   }
 
   getBitcoinById(id: string) {

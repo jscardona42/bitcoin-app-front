@@ -49,10 +49,16 @@ export class BitcoinsService {
     return trm;
   }
 
+  getTrmToday(updated: Date) {
+    return JSON.parse(localStorage.getItem('local_today_trm'));
+
+  }
+
   getTrms(bitcoins: any[], bitcoin_today: any) {
     const trmApi = new TrmApi();
     let arrayTrm = [];
-    bitcoins.push(bitcoin_today);
+    let updated_today = new Date(bitcoin_today.updated);
+    let upd_today = (updated_today.toISOString().substring(0, 10));
 
     if (bitcoins.length > 0) {
       bitcoins.forEach((bitcoin) => {
@@ -65,6 +71,14 @@ export class BitcoinsService {
             Object.assign(res, { updated: bitcoin.updated });
             arrayTrm.push(res);
             localStorage.setItem('local_trm', JSON.stringify(arrayTrm));
+          })
+          .catch((error) => { console.log("erorr") });
+
+        trmApi
+          .date(upd_today)
+          .then((res) => {
+            Object.assign(res, { updated: bitcoin_today.updated });
+            localStorage.setItem('local_today_trm', JSON.stringify(res));
           })
           .catch((error) => { console.log("erorr") });
       });

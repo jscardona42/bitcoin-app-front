@@ -39,13 +39,12 @@ export class BitcoinsPage implements OnInit {
   timer() {
     const suscribe = interval(60000).pipe(
     ).subscribe(susc => {
-      this.getBitcoins();
       this.getBitcoinToday();
+      this.getTrms(this.bitcoins, this.bitcoin_today);
       var updated = new Date(this.bitcoin_today.updated);
       console.log("timer");
       if (updated.getUTCHours() >= 0 && updated.getUTCMinutes() >= 0 && updated.getUTCHours() >= 0 && updated.getUTCMinutes() <= 5) {
         this.getBitcoins();
-        this.getTrms(this.bitcoins, this.bitcoin_today);
       }
       if (updated.getUTCHours() >= 23 && updated.getUTCMinutes() >= 58) {
         suscribe.unsubscribe();
@@ -70,7 +69,6 @@ export class BitcoinsPage implements OnInit {
   ngOnInit() {
     this.getBitcoins();
     this.getBitcoinToday();
-    // this.getTrms(this.bitcoins, this.bitcoin_today);
   }
 
   getBitcoins() {
