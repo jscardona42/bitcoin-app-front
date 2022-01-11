@@ -1,6 +1,6 @@
 Este proyecto fue desarrolado con Ionic 6 y capacitor-community/electron.
 
-Antes de poder ejecutar el proyecto usted debe comprbar que el server funcione correctamente(bitcoin-app-back).
+Antes de poder ejecutar el proyecto usted debe comprobar que el server funcione correctamente(bitcoin-app-back, http://localhost:3000/bitcoins).
 Ejecute por consola(cmd) los siguientes comandos en orden
 
 1. Angular CLI : npm install -g @angular/cli
