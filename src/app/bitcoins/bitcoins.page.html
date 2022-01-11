@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+    <ion-title>
+      <ion-row text-center>
+        <ion-col size="10">
+          <img src="../../assets/img/header.jpg" alt="">
+        </ion-col>
+      </ion-row>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <!-- Card que se actualiza -->
+    <ion-col *ngIf="bitcoin_today.updated !== undefined" [routerLink]="['/bitcoins/1',bitcoin_today.
+    id]" size="12" size-md="4">
+      <ion-card class="card_today">
+        <ion-card-header class="ion-text-center">
+          <ion-card-title>
+            {{bitcoin_today.updated | date: "dd-MM-yyyy":"UTC"}}
+          </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <h2>
+            <ion-icon name="logo-usd"></ion-icon>{{bitcoin_today.bpi_usd.rate}} {{bitcoin_today.bpi_usd.code}}
+          </h2>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <!-- Card que se actualiza -->
+    <ion-col *ngFor="let bitcoin of bitcoins;" [routerLink]="['/bitcoins/2',bitcoin.
+    id]" color="" size="12" size-md="4">
+      <ion-card color="">
+        <ion-card-header class="ion-text-center">
+          <ion-card-title>
+            {{bitcoin.updated | date: "dd-MM-yyyy":"UTC"}}
+          </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <h2>
+            <ion-icon name="logo-usd"></ion-icon>{{bitcoin.bpi_usd.rate}} {{bitcoin.bpi_usd.code}}
+          </h2>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
